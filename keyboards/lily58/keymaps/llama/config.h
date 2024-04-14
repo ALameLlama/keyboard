@@ -37,3 +37,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_LED_COUNT 14    // Number of LEDs
 #define RGBLIGHT_SLEEP
 */
+
+#define ENCODERS_PAD_A { F5 }
+#define ENCODERS_PAD_B { F4 }
+// #define ENCODER_RESOLUTION 2
