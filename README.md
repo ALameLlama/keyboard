@@ -12,4 +12,5 @@ qmk compile -kb crkbd -km via -e CONVERT_TO=helios
 
 ```
 qmk compile -kb lily58 -km via -e CONVERT_TO=helios
+qmk compile -kb lily58 -km llama -e CONVERT_TO=helios
 ```
