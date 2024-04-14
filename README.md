@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ALameLlama/keyboard/master/llama.png" />
+</p>
+
 ## Compile
 
 QMK MSYS
