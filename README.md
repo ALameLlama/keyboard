@@ -31,5 +31,5 @@ qmk compile -kb lily58 -km llama -e CONVERT_TO=helios
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ALameLlama/keyboard/master/resources/lily58/ajust.png" />
+  <img src="https://raw.githubusercontent.com/ALameLlama/keyboard/master/resources/lily58/adjust.png" />
 </p>
