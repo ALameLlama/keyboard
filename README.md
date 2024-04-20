@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ALameLlama/keyboard/master/resources/llama.png" />
+  <img src="https://raw.githubusercontent.com/ALameLlama/keyboard/master/resources/llama.gif" />
 </p>
 
 ## Compile
