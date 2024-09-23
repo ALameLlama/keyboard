@@ -234,35 +234,35 @@ const char *read_keylogs(void) {
 #define OLED_SCREENSAVER_TIMEOUT 30000
 
 bool oled_task_user(void) {
-    if (is_keyboard_master()) {
-        // Host Keyboard Layer Status
-        oled_write_P(PSTR("Layer: "), false);
+	if (last_input_activity_elapsed() > OLED_SCREENSAVER_TIMEOUT) {
+		oled_off();
+	} else {
+        if (is_keyboard_master()) {
+            // Host Keyboard Layer Status
+            oled_write_P(PSTR("Layer: "), false);
 
-        switch (get_highest_layer(layer_state)) {
-            case _QWERTY:
-                oled_write_ln_P(PSTR("Default"), false);
-                break;
-            case _RAISE:
-                oled_write_ln_P(PSTR("Raise"), false);
-                break;
-            case _LOWER:
-                oled_write_ln_P(PSTR("Lower"), false);
-                break;
-            case _ADJUST:
-                oled_write_ln_P(PSTR("Adjust"), false);
-                break;
-            default:
-                oled_write_ln_P(PSTR("Undefined"), false);
-        }
+            switch (get_highest_layer(layer_state)) {
+                case _QWERTY:
+                    oled_write_ln_P(PSTR("Default"), false);
+                    break;
+                case _RAISE:
+                    oled_write_ln_P(PSTR("Raise"), false);
+                    break;
+                case _LOWER:
+                    oled_write_ln_P(PSTR("Lower"), false);
+                    break;
+                case _ADJUST:
+                    oled_write_ln_P(PSTR("Adjust"), false);
+                    break;
+                default:
+                    oled_write_ln_P(PSTR("Undefined"), false);
+            }
 
-        oled_write_ln(read_keylog(), false);
-        oled_write_ln(read_keylogs(), false);
-    } else {
-         if (last_input_activity_elapsed() > OLED_SCREENSAVER_TIMEOUT) {
-             oled_off();
-         } else {
+            oled_write_ln(read_keylog(), false);
+            oled_write_ln(read_keylogs(), false);
+        } else {
             render_animation();
-         }
+        }
     }
     
     return false;
