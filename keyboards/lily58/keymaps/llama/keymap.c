@@ -133,8 +133,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     return state;
 }
 
-
-
 // Animation params
 #define FRAME_DURATION 333 // How long each frame should last in ms
 
@@ -233,6 +231,8 @@ const char *read_keylogs(void) {
     return keylogs_str;
 }
 
+#define OLED_SCREENSAVER_TIMEOUT 30000
+
 bool oled_task_user(void) {
     if (is_keyboard_master()) {
         // Host Keyboard Layer Status
@@ -253,13 +253,16 @@ bool oled_task_user(void) {
                 break;
             default:
                 oled_write_ln_P(PSTR("Undefined"), false);
-    }
+        }
 
-    oled_write_ln(read_keylog(), false);
-    oled_write_ln(read_keylogs(), false);
-
+        oled_write_ln(read_keylog(), false);
+        oled_write_ln(read_keylogs(), false);
     } else {
-        render_animation();
+         if (last_input_activity_elapsed() > OLED_SCREENSAVER_TIMEOUT) {
+             oled_off();
+         } else {
+            render_animation();
+         }
     }
     
     return false;
